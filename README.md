@@ -1,3 +1,3 @@
 # Extensions
 
-A description of this package.
+A collection of usefull extension to swift classes

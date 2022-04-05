@@ -1,6 +1,8 @@
-public struct Extensions {
-    public private(set) var text = "Hello, World!"
-
-    public init() {
-    }
-}
+/**
+ Extensions.swift
+ 
+ 
+ 
+ Created by Carsten Müller on 08.03.22.
+ Copyright © 2022 Carsten Müller. All rights reserved.
+ */
