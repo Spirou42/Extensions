@@ -75,7 +75,7 @@ extension View {
     return window
   }
   
-  func openNewWindow(with title: String = "new Window") {
+  public func openNewWindow(with title: String = "new Window") {
     self.newWindowInternal(with: title).contentView = NSHostingView(rootView: self)
   }
 #endif

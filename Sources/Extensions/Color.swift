@@ -51,14 +51,22 @@ extension Color {
 #endif
   /// retrives the RGBA compnents from a SwiftUI color
   public var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+#if canImport(UIKit)
+ let color = asNative
+#else
     let color = asNative.usingColorSpace(.deviceRGB)!
+#endif
     var t = (CGFloat(), CGFloat(), CGFloat(), CGFloat())
     color.getRed(&t.0, green: &t.1, blue: &t.2, alpha: &t.3)
     return t
   }
   
   public var hsva: (hue: CGFloat, saturation: CGFloat, value: CGFloat, alpha: CGFloat) {
+#if canImport(UIKit)
+ let color = asNative
+#else
     let color = asNative.usingColorSpace(.deviceRGB)!
+#endif
     var t = (CGFloat(), CGFloat(), CGFloat(), CGFloat())
     color.getHue(&t.0, saturation: &t.1, brightness: &t.2, alpha: &t.3)
     return t
