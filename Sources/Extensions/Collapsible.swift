@@ -21,8 +21,8 @@ public struct Collapsible<Content: View>: View {
         action: { self.collapsed.toggle() },
         label: {
           HStack() {
-            self.label.padding([.trailing],12)
-            Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
+            Image(systemName: self.collapsed ? "chevron.up" : "chevron.down")
+            self.label
           }
           .padding(.bottom, 1)
           .background(Color.white.opacity(0.01))
@@ -31,14 +31,18 @@ public struct Collapsible<Content: View>: View {
       .buttonStyle(PlainButtonStyle())
       
       VStack {
-        self.content
+        self.content.allowsHitTesting(!collapsed)
       }
-      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none)
+      .frame(height:collapsed ? 0 : nil)
+      //.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none)
       .clipped()
-      .animation(.easeOut, value: collapsed)
-      //.transition(.slide)
+      .animation(.easeIn, value: collapsed)
+      .transition(.slide)
       //.transition(.opacity)
     }
+    .clipped()
+    .animation(.easeOut, value:collapsed)
+    .transition(.slide)
   }
   public init(label: () -> Text,
               @ViewBuilder _ content: () -> Content) {
