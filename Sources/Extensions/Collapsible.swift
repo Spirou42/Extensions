@@ -14,11 +14,14 @@ public struct Collapsible<Content: View>: View {
   public var content: Content
   
   @State private var collapsed: Bool = false
-  
+   @Binding public var toggled: Bool
+
   public var body: some View {
     VStack(alignment:.leading) {
       Button(
-        action: { self.collapsed.toggle() },
+        action: { self.collapsed.toggle()
+          self.toggled.toggle()
+        },
         label: {
           HStack() {
             Image(systemName: self.collapsed ? "chevron.up" : "chevron.down")
@@ -45,8 +48,11 @@ public struct Collapsible<Content: View>: View {
     .transition(.slide)
   }
   public init(label: () -> Text,
+              toggled : Binding<Bool> ,
               @ViewBuilder _ content: () -> Content) {
     self.label =  label ()
     self.content = content()
+    self._toggled = toggled 
+    
   }
 }
