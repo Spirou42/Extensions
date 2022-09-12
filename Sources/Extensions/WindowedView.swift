@@ -30,7 +30,7 @@ extension WindowedView {
 
 #if os(macOS)
   private func newWindowInternal(with title: String) -> NSWindow {
-    var window = NSWindow(
+    let window = NSWindow(
       contentRect: NSRect(x: 20, y: 20, width: 680, height: 600),
       styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
       backing: .buffered,

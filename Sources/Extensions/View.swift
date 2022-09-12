@@ -12,15 +12,15 @@ import SwiftUI
 
 extension View {
   
-  func border(_ color: Color, width: CGFloat, edges: [Edge] = Edge.allCases) -> some View {
+  public func border(_ color: Color, width: CGFloat, edges: [Edge] = Edge.allCases) -> some View {
     overlay(EdgeBorder(width: width, edges: edges).foregroundColor(color))
   }
   
-  func inset() -> some View{
+  public func inset() -> some View{
     overlay(EdgeBorder(width: 1, edges: [.top,.leading]).foregroundColor(Color("insetTop")))
       .overlay(EdgeBorder(width: 1, edges: [.bottom,.trailing]).foregroundColor(Color("insetBottom")))
   }
-  func outset() -> some View{
+  public func outset() -> some View{
     overlay(EdgeBorder(width: 1, edges: [.top,.leading]).foregroundColor(Color("insetBottom")))
       .overlay(EdgeBorder(width: 1, edges: [.bottom,.trailing]).foregroundColor(Color("insetTop")))
     
@@ -50,7 +50,7 @@ extension View {
   }
   
   @ViewBuilder
-  func viewBorder(color: Color = .black, radius: CGFloat = 0.4, outline: Bool = false) -> some View {
+  public func viewBorder(color: Color = .black, radius: CGFloat = 0.4, outline: Bool = false) -> some View {
     self
       .shadow(color: color, radius: radius)
       .shadow(color: color, radius: radius)

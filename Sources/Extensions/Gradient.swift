@@ -13,20 +13,20 @@ import SwiftUI
 extension Gradient {
 	
 	/// creates a gradient form the light edge of the gradient
-  init(withLight color: Color, offset:Double = 0.26){
+  public init(withLight color: Color, offset:Double = 0.26){
     let hsva = color.hsva
     let darkColor = Color(hue: hsva.hue, saturation: hsva.saturation, brightness: hsva.value - offset)
     self.init(colors: [darkColor,color])
   }
   
   /// creates a gradient from the dark edge of the gradient
-  init(whithDark color: Color, offset:Double = 0.26){
+  public init(whithDark color: Color, offset:Double = 0.26){
     let hsva = color.hsva
     let highlightColor = Color(hue: hsva.hue, saturation: hsva.saturation, brightness: hsva.value + offset)
     self.init(colors: [color,highlightColor])
   }
   /// creates a gradient form the middle of the gradient
-  init(withMid color: Color, offset:Double = 0.26){
+  public init(withMid color: Color, offset:Double = 0.26){
     let hsva = color.hsva
     let lighlighColor = Color.init(hue: hsva.hue, saturation: hsva.saturation, brightness: hsva.value+offset/2.0)
     let darkColor = Color.init(hue: hsva.hue, saturation: hsva.saturation, brightness: hsva.value-offset/2.0)
