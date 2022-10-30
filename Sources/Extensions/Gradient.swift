@@ -20,7 +20,7 @@ extension Gradient {
   }
   
   /// creates a gradient from the dark edge of the gradient
-  public init(whithDark color: Color, offset:Double = 0.26){
+  public init(withDark color: Color, offset:Double = 0.26){
     let hsva = color.hsva
     let highlightColor = Color(hue: hsva.hue, saturation: hsva.saturation, brightness: hsva.value + offset)
     self.init(colors: [color,highlightColor])
