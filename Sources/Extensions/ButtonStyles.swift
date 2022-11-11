@@ -108,6 +108,7 @@ public struct GradientGlyphButtonStyle: ButtonStyle {
   public init(){
     
   }
+
   public init( buttonColor:Color = .green, labelColor:Color = .white, cornerRadius:Double = 5, shadowRadius:Double = 3,
                glyph:Text = Text(""), glyphPadding:Double = -6, width:Double = 140, height:Double = 41, bevelSize:Double = 5, useFaceGradient:Bool = false){
     self.buttonColor = buttonColor
@@ -127,32 +128,33 @@ public struct GradientGlyphButtonStyle: ButtonStyle {
       glyph
         .foregroundColor(labelColor)
         .padding([.leading],glyphPadding)
+        .shadow(color:Gradient.color(withMid: buttonColor, offset: 0.5)[0], radius: 0.3, x:-0.4, y:-0.4)
+        .shadow(color:Gradient.color(withMid: buttonColor, offset: 0.5)[1], radius: 0.3, x:0.4, y:0.4)
+
+
       
       configuration.label
       
       //.padding([.leading,.trailing],2)
       //.padding([.top,.bottom],5)
         .foregroundColor(labelColor)
-      
-      
-      /*
-       .compositingGroup()
-       .shadow(color: .black, radius: shadowRadius)
-       .opacity(configuration.isPressed ? 0.5 : 1.0)
-       
-       .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
-       */
+        .shadow(color:Gradient.color(withMid: buttonColor, offset: 0.5)[0], radius: 0.3, x:-0.4, y:-0.4)
+        .shadow(color:Gradient.color(withMid: buttonColor, offset: 0.5)[1], radius: 0.3, x:0.4, y:0.4)
+
     }
     
     .frame(width: width, height:height)
     .background(){
       ZStack{
-        RoundedRectangle(cornerRadius: cornerRadius).fill(LinearGradient(gradient: Gradient(withMid: buttonColor), startPoint: UnitPoint(x: 0.0, y: 1.0), endPoint: UnitPoint(x: 0.0, y: 0.0)))
+        RoundedRectangle(cornerRadius: cornerRadius)
+          .fill(LinearGradient(gradient: Gradient(withMid: buttonColor), startPoint: UnitPoint(x: 0.0, y: 1.0), endPoint: UnitPoint(x: 0.0, y: 0.0)))
         if useFaceGradient {
-          RoundedRectangle(cornerRadius: cornerRadius-bevelSize/2.0).fill(LinearGradient(gradient: Gradient(withMid: buttonColor,offset: 0.10), startPoint: UnitPoint(x: 0.0, y: -0.20), endPoint: UnitPoint(x: 0.0, y: 1.0)))
+          RoundedRectangle(cornerRadius: cornerRadius-bevelSize/2.0)
+            .fill(LinearGradient(gradient: Gradient(withMid: buttonColor,offset: 0.10), startPoint: UnitPoint(x: 0.0, y: -0.20), endPoint: UnitPoint(x: 0.0, y: 1.0)))
             .frame(width: width-bevelSize, height: height-bevelSize)
         }else{
-          RoundedRectangle(cornerRadius: cornerRadius-bevelSize/2.0).fill(buttonColor)
+          RoundedRectangle(cornerRadius: cornerRadius-bevelSize/2.0)
+            .fill(buttonColor)
             .frame(width: width-bevelSize, height: height-bevelSize)
           
         }
