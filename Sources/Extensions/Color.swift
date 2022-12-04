@@ -40,6 +40,10 @@ extension Color {
   public static var darkWhite:Color {
     return Color(white:0.95)
   }
+  // and a light black
+  public static var lightBlack:Color{
+    return Color(white: 0.10)
+  }
   
   /**
    a couple of usefull methods to get the rgba and hsva components form a SwiftUI Color
@@ -136,6 +140,24 @@ extension Color {
     }
     public static var OrangeLighter:Color {
       return Color("Theme OrangeLighter")
+    }
+    
+ 
+    public static var Gray:Color{
+      return Color.gray
+    }
+    
+    public static var GrayDark:Color{
+      return Color.darkGray
+    }
+    public static var GrayDarker:Color{
+      return Color.lightBlack
+    }
+    public static var GrayLight:Color{
+      return Color.lightGray
+    }
+    public static var GrayLighter:Color{
+      return Color.lightLightGray
     }
     
   }
