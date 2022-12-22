@@ -10,30 +10,35 @@ import SwiftUI
 
 
 public struct ColoredButtonStyle: ButtonStyle {
-  public var buttonColor: Color = .green
-  public var labelColor: Color = .white
+  public var buttonColor:Color = .green
+  public var labelColor:Color = .white
   public var cornerRadius: Double = 5
   public var shadowRadius:Double = 3
+  public var width:Double = 120.0
+  public var height:Double = 41.0
   
   public init(){}
 
-  public init(buttonColor:Color = .green, labelColor:Color = .white, cornerRadius:Double = 5, shadowRadius:Double = 3){
+  public init(buttonColor:Color = .green, labelColor:Color = .white, cornerRadius:Double = 5, shadowRadius:Double = 3, width:Double = 120.0, height:Double = 41.0){
     self.buttonColor = buttonColor
     self.labelColor = labelColor
     self.cornerRadius = cornerRadius
     self.shadowRadius = shadowRadius
+    self.width = width
+    self.height = height
   }
   
   public func makeBody(configuration: ColoredButtonStyle.Configuration) -> some View {
     
     configuration.label
-      .frame(width: 120, height:41)
-      .padding([.leading,.trailing],6)
+      //.frame(width: self.width, height:self.height)
+      //.padding([.leading,.trailing],6)
     //.padding([.top,.bottom],5)
       .foregroundColor(labelColor)
       .background(RoundedRectangle(cornerRadius: 5).fill(buttonColor))
     
       .compositingGroup()
+    
       .shadow(color: .black, radius: shadowRadius)
       .opacity(configuration.isPressed ? 0.5 : 1.0)
     

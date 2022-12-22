@@ -56,3 +56,13 @@ public struct Collapsible<Content: View>: View {
     
   }
 }
+
+struct Collapsible_Preview: PreviewProvider {
+  @State static var toggler:Bool = false
+  static var previews: some View {
+    Collapsible(label: {Text("Label").font(.title)},toggled: .constant(false) ){
+      Text("Hurga")
+      Text("Rülpsi Kola")
+    }
+  }
+}
