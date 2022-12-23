@@ -45,6 +45,11 @@ extension Color {
     return Color(white: 0.10)
   }
   
+  
+  public func withAlpha(_ alpha: CGFloat) -> Color{
+    var k = self.rgba
+    return Color(red:k.0, green: k.1, blue: k.2, opacity: alpha)
+  }
   /**
    a couple of usefull methods to get the rgba and hsva components form a SwiftUI Color
    */
