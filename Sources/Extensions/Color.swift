@@ -47,7 +47,7 @@ extension Color {
   
   
   public func withAlpha(_ alpha: CGFloat) -> Color{
-    var k = self.rgba
+    let k = self.rgba
     return Color(red:k.0, green: k.1, blue: k.2, opacity: alpha)
   }
   /**

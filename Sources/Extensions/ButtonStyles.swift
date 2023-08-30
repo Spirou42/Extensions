@@ -35,11 +35,11 @@ public struct ColoredButtonStyle: ButtonStyle {
       //.padding([.leading,.trailing],6)
     //.padding([.top,.bottom],5)
       .foregroundColor(labelColor)
-      .background(RoundedRectangle(cornerRadius: 5).fill(buttonColor))
+      .background(RoundedRectangle(cornerRadius: self.cornerRadius).fill(buttonColor))
     
       .compositingGroup()
     
-      .shadow(color: .black, radius: shadowRadius)
+//      .shadow(color: .white, radius: shadowRadius)
       .opacity(configuration.isPressed ? 0.5 : 1.0)
     
       .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
