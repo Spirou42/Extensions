@@ -42,7 +42,7 @@ public struct ColoredButtonStyle: ButtonStyle {
 //      .shadow(color: .white, radius: shadowRadius)
       .opacity(configuration.isPressed ? 0.5 : 1.0)
     
-      .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
+      .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
   }
 }
 
