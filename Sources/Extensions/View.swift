@@ -97,3 +97,11 @@ private struct SizePreferenceKey: PreferenceKey {
   static var defaultValue: CGSize = .zero
   static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
 }
+
+
+public extension ProcessInfo {
+    
+    var isSwiftUIPreview: Bool {
+        environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+    }
+}

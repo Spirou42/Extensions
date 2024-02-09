@@ -7,16 +7,19 @@
 
 import SwiftUI
 
-struct CustomSlider: View {
-  @Binding var value: Double
+public struct CustomSlider: View {
+  @Binding public var sliderValue: Double
   
-  @State var lastCoordinateValue: CGFloat = 0.0
-  var sliderRange: ClosedRange<Double> = 1...100
-  var thumbColor: Color = .yellow
-  var minTrackColor: Color = .blue
-  var maxTrackColor: Color = .gray
+  @State private var lastCoordinateValue: CGFloat = 0.0
+  public var sliderRange: ClosedRange<Double> = 1...100
+  public var thumbColor: Color = .yellow
+  public var minTrackColor: Color = .blue
+  public var maxTrackColor: Color = .gray
+
   
-  var body: some View {
+
+  
+  public var body: some View {
     GeometryReader { gr in
       let thumbHeight = gr.size.height * 1.8
       let thumbWidth = gr.size.width * 0.04
@@ -26,7 +29,7 @@ struct CustomSlider: View {
       
       let scaleFactor = (maxValue - minValue) / (sliderRange.upperBound - sliderRange.lowerBound)
       let lower = sliderRange.lowerBound
-      let sliderVal = (self.value - lower) * scaleFactor + minValue
+      let sliderVal = (self.sliderValue - lower) * scaleFactor + minValue
       
       ZStack {
         Rectangle()
@@ -53,10 +56,10 @@ struct CustomSlider: View {
                   }
                   if v.translation.width > 0 {
                     let nextCoordinateValue = min(maxValue, self.lastCoordinateValue + v.translation.width)
-                    self.value = ((nextCoordinateValue - minValue) / scaleFactor)  + lower
+                    self.sliderValue = ((nextCoordinateValue - minValue) / scaleFactor)  + lower
                   } else {
                     let nextCoordinateValue = max(minValue, self.lastCoordinateValue + v.translation.width)
-                    self.value = ((nextCoordinateValue - minValue) / scaleFactor) + lower
+                    self.sliderValue = ((nextCoordinateValue - minValue) / scaleFactor) + lower
                   }
                 }
             )
@@ -65,13 +68,15 @@ struct CustomSlider: View {
       }
     }
   }
+  
+  
 }
 
 
 struct CustomSlider_Preview: PreviewProvider {
   @State static var sliderValue:Double = 15.0
   static var previews: some View {
-    CustomSlider(value: $sliderValue,sliderRange: 10...20).frame(width: 300, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+    CustomSlider(sliderValue: $sliderValue,sliderRange: 10...20).frame(width: 300, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
       .padding([.top,.bottom,.leading,.trailing],10)
   }
 }
