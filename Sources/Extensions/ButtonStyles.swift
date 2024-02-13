@@ -31,7 +31,7 @@ public struct ColoredButtonStyle: ButtonStyle {
   public func makeBody(configuration: ColoredButtonStyle.Configuration) -> some View {
     
     configuration.label
-      //.frame(width: self.width, height:self.height)
+      .frame(width: self.width, height:self.height)
       //.padding([.leading,.trailing],6)
     //.padding([.top,.bottom],5)
       .foregroundColor(labelColor)
@@ -60,13 +60,13 @@ public struct ColoredGlyphButtonStyle: ButtonStyle {
     
   }
   
-  public init(buttonColor:Color = .green, labelColor:Color = .white, cornerRadius:Double = 5, shadowRadius:Double = 0, glyp:Text = Text(""),
+  public init(buttonColor:Color = .green, labelColor:Color = .white, cornerRadius:Double = 5, shadowRadius:Double = 0, glyph:Text = Text(""),
               glyphPadding:Double = 8, width:Double = 140, height:Double = 41){
     self.buttonColor = buttonColor
     self.labelColor = labelColor
     self.cornerRadius = cornerRadius
     self.shadowRadius = shadowRadius
-    self.glyph = glyp
+    self.glyph = glyph
     self.glyphPadding  = glyphPadding
     self.width = width
     self.height = height
